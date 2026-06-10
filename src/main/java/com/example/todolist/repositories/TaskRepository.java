@@ -1,5 +1,6 @@
 package com.example.todolist.repositories;
 
+import com.example.todolist.enums.TaskStatus;
 import com.example.todolist.models.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findByUpdatedAtAfter(LocalDateTime offset);
+    boolean existsByNameAndTaskStatus(String name, TaskStatus status);
 }
